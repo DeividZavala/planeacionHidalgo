@@ -13,7 +13,7 @@
 	  <span class="input-group-addon" id="sizing-addon1">
 	  	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 	  </span>
-	  <input ng-model="searchField" type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+	  <input ng-model="searchField" type="text" class="form-control" placeholder="Buscar" aria-describedby="sizing-addon1">
 	</div>
 </article>
 
@@ -26,7 +26,7 @@
 
 
     <div class="list-group row">
-        <div href="#" class="list-group-item" ng-repeat="propuesta in $ctrl.propuestas | filter:searchField">
+        <div href="#" class="list-group-item col-md-6" ng-repeat="propuesta in $ctrl.propuestas | filter:searchField">
             <h4 class="list-group-item-heading">{{propuesta.secretaria}}</h4>
             <p class="list-group-item-text">
                 <ul class="list-group">
