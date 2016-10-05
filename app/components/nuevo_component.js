@@ -1,5 +1,6 @@
 (function () {
 
+
     var nuevo = {
         templateUrl:'app/components/nuevo.html',
         controller:nuevoController,
@@ -29,6 +30,27 @@
             console.log('listo')
         }
 
+        nuevo.estate = null;
+        nuevo.userEmail = null;
+        nuevo.fecha = Date.now();
+ 
+
+        
+        nuevo.userLoggedIn = function(){
+            firebase.auth().onAuthStateChanged(function(user){
+                if (user) {
+                        nuevo.estate = true;
+                        nuevo.userEmail = user.email;
+                        console.log(user);
+                      } else {
+                        nuevo.estate = false;
+                      }
+
+
+        });
+
+            return nuevo.estate;
+        };
     }
 
     angular

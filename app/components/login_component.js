@@ -11,16 +11,30 @@
         self.estado = null;
         self.email = null;
 
+
+                firebase.auth().onAuthStateChanged(function(user) {
+              if (user) {
+                self.estado = true;
+                self.email = user.email;
+                console.log(user);
+              } else {
+                self.estado = false;
+              }
+            });
+
        
         this.logg = function(){
+            $('#load').show();
             firebase.auth().signInWithEmailAndPassword(self.email, self.password)
             .then(function(response){
                 console.log(response);
-                $location.path('/nuevo');
-                location.reload();
+
+               window.location.replace("/#/nuevo");
             })
             .catch(function(response){
-                console.log(response)
+                console.log(response);
+                alert('Tu usuario y contraseña son incorrectos');
+                $('#load').hide();
             });
 
         };
@@ -40,8 +54,9 @@
         };
 
         this.logOut = function(){
-            firebase.auth().signOut().then(function() {
-               location.reload();
+            firebase.auth().signOut()
+            .then(function() {
+               window.location.replace("/");
             }, function(error) {
               // An error happened.
             });

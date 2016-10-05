@@ -1,5 +1,6 @@
-<form action="" ng-submit="$ctrl.add()" class="container">
-	<div class='row'>	
+<section ng-show="$ctrl.userLoggedIn()" class="container">
+	<form action="" ng-submit="$ctrl.add()" class="container">
+<div class='row'>	
 <div class="col-md-2">
 <span>Secretaría</span></div>
 <div class="col-md-10">
@@ -103,7 +104,24 @@
 		<div class="col-md-10">
 		<textarea class="form-control" ng-model="$ctrl.programas_asociados"></textarea></div>
 
-</div>
+
+		<br>
+		<br>
+		<br>
+		<br>
+	<div class="col-md-2">
+		<span>Creado por: </span></div>
+		<div class="col-md-10">
+		<input disabled class="form-control" value="{{$ctrl.userEmail}}">
+	</div>
+	<div class="col-md-2">
+		<span>Fecha:</span></div>
+		<div class="col-md-10">
+		<input disabled class="form-control" value="{{$ctrl.fecha | date :  'dd/MM/y hh:mm'}}">
+	</div>
+	
+	</div>
+
 <div style='text-align:center;'>
 <br>
 <input  class="btn btn-primary" type="submit" style='bmargin:0 auto'>
@@ -111,4 +129,11 @@
 	
 
 
+
 </form>
+
+</section>
+<section style="text-align:center" class="container">
+	<a ng-hide="$ctrl.userLoggedIn()" href="#/login" class="btn btn-primary">Porfavor inicia sesión</a>
+</section>
+
