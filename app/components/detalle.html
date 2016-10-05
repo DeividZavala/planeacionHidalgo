@@ -1,5 +1,5 @@
 <section class="container">
-    <h1>detalle</h1>
+    <h1>detalle - <span style="cursor:pointer" class="imprimir glyphicon glyphicon-print" aria-hidden="true"></span></h1> 
     <div class="list-group">
     <div  class="list-group-item active">
         <h4 class="list-group-item-heading">{{$ctrl.propuesta.secretaria}}</h4>
@@ -58,3 +58,10 @@
     </div>
     </div>
 </section>
+
+<script>
+    $('.imprimir').click(function(){
+    window.print();
+    return false;
+});
+</script>
