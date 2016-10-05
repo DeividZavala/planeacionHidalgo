@@ -1,7 +1,18 @@
-<section class="container">
+
+<section ng-show="$ctrl.checkLogin()" class="container">
     <h3>Propuestas</h3>
+   <article class="row">	
+    <div class="input-group input-group-lg col-md-4">
+	  <span class="input-group-addon" id="sizing-addon1">
+	  	<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+	  </span>
+	  <input ng-model="searchField" type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
+	</div>
+</article>
+
+
     <div class="list-group row">
-        <div href="#" class="list-group-item" ng-repeat="propuesta in $ctrl.propuestas">
+        <div href="#" class="list-group-item" ng-repeat="propuesta in $ctrl.propuestas | filter:searchField">
             <h4 class="list-group-item-heading">{{propuesta.secretaria}}</h4>
             <p class="list-group-item-text">
                 <ul class="list-group">
@@ -11,5 +22,11 @@
                 <a href="#/propuesta/{{propuesta.$id}}">Detalle</a>
             </p>
         </div>
+    </div>
+</section>
+
+<section class="container">
+    <div style="text-align:center;" ng-hide="$ctrl.userLoggedIn()" class="alert alert-warning" role="alert">
+        Porfavor inicia sesión <a href="#/login" class="btn btn-primary">aquí</a>
     </div>
 </section>
