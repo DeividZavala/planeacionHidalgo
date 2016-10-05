@@ -32,7 +32,9 @@
                window.location.replace("/#/nuevo");
             })
             .catch(function(response){
-                console.log(response)
+                console.log(response);
+                alert('Tu usuario y contraseña son incorrectos');
+                $('#load').hide();
             });
 
         };
@@ -52,8 +54,9 @@
         };
 
         this.logOut = function(){
-            firebase.auth().signOut().then(function() {
-               window.location.replace("/#/login");
+            firebase.auth().signOut()
+            .then(function() {
+               window.location.replace("/");
             }, function(error) {
               // An error happened.
             });

@@ -11,6 +11,7 @@
         self.message = false;
 
         self.crearUsuario = function(){
+            $('#load').show();
             firebase.auth().createUserWithEmailAndPassword(self.email, self.password)
             .then(function(){
                 alert("Tu usuario se ha creado con exito");
