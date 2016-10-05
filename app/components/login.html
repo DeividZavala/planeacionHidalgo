@@ -1,5 +1,7 @@
 <section class="container centrado">
 
+<div ng-show="$ctrl.err()" class="alert alert-danger" role="alert">{{$ctrl.erro}}</div>
+
 <article ng-hide="$ctrl.checkLogin()" class="row">
 <form id="formulario1">
 	<div class="input-group col-sm-4 col-sm-offset-4">

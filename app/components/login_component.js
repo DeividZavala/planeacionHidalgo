@@ -10,17 +10,11 @@
         login.putos="putos todos";
         self.estado = null;
         self.email = null;
+        self.erro = false;
 
-
-                firebase.auth().onAuthStateChanged(function(user) {
-              if (user) {
-                self.estado = true;
-                self.email = user.email;
-                console.log(user);
-              } else {
-                self.estado = false;
-              }
-            });
+        this.err = function(){
+            return self.erro != false;
+        }
 
        
         this.logg = function(){
@@ -33,7 +27,8 @@
             })
             .catch(function(response){
                 console.log(response);
-                alert('Tu usuario y contraseña son incorrectos');
+                self.erro = 'Tu usuario y contraseña son incorrectos';
+                self.err();
                 $('#load').hide();
             });
 
