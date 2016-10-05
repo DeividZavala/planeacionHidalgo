@@ -1,3 +1,4 @@
+<section ng-show="$ctrl.userLoggedIn()" class="container">
 <div class='row'>	
 <div class="col-md-2">
 <span>Secretaría</span></div>
@@ -108,4 +109,9 @@
 <br>
 	<button class="btn btn-primary" style='bmargin:0 auto'>Guardar</button></div>
 	
+
+</section>
+<section style="text-align:center" class="container">
+	<a ng-hide="$ctrl.userLoggedIn()" href="#/login" class="btn btn-primary">Porfavor inicia sesión</a>
+</section>
 

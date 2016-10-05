@@ -5,8 +5,25 @@
         templateUrl:'app/components/registro.html'
     }
 
-    function registroController() {
-        var registro = this;
+    function registroController($location) {
+        var self = this;
+        self.estado;
+        self.message = false;
+
+        self.crearUsuario = function(){
+            firebase.auth().createUserWithEmailAndPassword(self.email, self.password)
+            .then(function(){
+                alert("Tu usuario se ha creado con exito");
+                window.location.replace("/#/login");
+            })
+            .catch(function(error) {
+              // Handle Errors here.
+             console.log(error);
+             alert("Error al crear el usuario, intentalo nuevamente");
+              // ...
+            });
+        };
+
     }
 
 

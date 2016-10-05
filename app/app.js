@@ -3,13 +3,13 @@
         .module('palneacionHidalgo',['firebase','ngRoute'])
         .controller('indexCtrl',indexCtrl);
 
-    function indexCtrl() {
+    function indexCtrl($location) {
         var self = this;
         self.estado = null;
 
         this.logOut = function(){
             firebase.auth().signOut().then(function() {
-               location.reload();
+            	window.location.replace("/#/login");
             }, function(error) {
               // An error happened.
             });
@@ -26,6 +26,7 @@
               }
             });
             console.log(self.estado);
+            var esta = self.estado;
             return self.estado;
         };
     }
