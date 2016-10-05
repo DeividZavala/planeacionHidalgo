@@ -7,6 +7,7 @@
 
     function loginController() {
         var login = this;
+        login.putos="putos todos";
     }
 
 
