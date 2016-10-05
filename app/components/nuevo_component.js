@@ -11,7 +11,8 @@
     function nuevoController(Auth) {
         var self = this;
         self.estate = null;
-        self.email = null;
+        self.userEmail = null;
+        self.fecha = Date.now();
  
 
         
@@ -19,7 +20,7 @@
             firebase.auth().onAuthStateChanged(function(user){
                 if (user) {
                         self.estate = true;
-                        self.email = user.email;
+                        self.userEmail = user.email;
                         console.log(user);
                       } else {
                         self.estate = false;

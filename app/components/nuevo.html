@@ -104,7 +104,24 @@
 		<div class="col-md-10">
 		<textarea class="form-control"></textarea></div>
 
-</div>
+
+		<br>
+		<br>
+		<br>
+		<br>
+	<div class="col-md-2">
+		<span>Creado por: </span></div>
+		<div class="col-md-10">
+		<input disabled class="form-control" value="{{$ctrl.userEmail}}">
+	</div>
+	<div class="col-md-2">
+		<span>Fecha:</span></div>
+		<div class="col-md-10">
+		<input disabled class="form-control" value="{{$ctrl.fecha | date :  'dd/MM/y hh:mm'}}">
+	</div>
+	
+	</div>
+
 <div style='text-align:center;'>
 <br>
 	<button class="btn btn-primary" style='bmargin:0 auto'>Guardar</button></div>
