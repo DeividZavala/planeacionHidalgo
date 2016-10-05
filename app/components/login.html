@@ -1,23 +1,29 @@
 <section class="container centrado">
 
-<article class="row">
+<article ng-hide="$ctrl.checkLogin()" class="row">
 
 	<div class="input-group col-sm-4 col-sm-offset-4">
 	  <span class="input-group-addon" id="basic-addon1">Email</span>
-	  <input type="email" class="form-control" placeholder="Correo Electrónico" aria-describedby="basic-addon1">
+	  <input ng-model="$ctrl.email" type="email" class="form-control" placeholder="Correo Electrónico" aria-describedby="basic-addon1">
 	</div>
 	<br>
 	<div class="input-group col-sm-4 col-sm-offset-4">
 	  <span class="input-group-addon" id="basic-addon1">Password</span>
-	  <input type="password" class="form-control" placeholder="Contraseña" aria-describedby="basic-addon1">
+	  <input ng-model="$ctrl.password" type="password" class="form-control" placeholder="Contraseña" aria-describedby="basic-addon1">
 	</div>
 	<br>
-	<button class="btn btn-primary ">Ingresar</button>
+	<button ng-click="$ctrl.logg()" class="btn btn-primary ">Ingresar</button>
 	<p>¿No tienes una cuenta?, registrate <a href="">aqui</a></p>
 
 	{{$ctrl.putos}}
 
 
+
+</article>
+
+<article ng-show="$ctrl.checkLogin()" class="row">
+	<h2>Hola {{$ctrl.email}}</h2>
+	<button ng-click="$ctrl.logOut()" class="btn btn-primary ">Cerrar Sesión</button>
 
 </article>
 </section>
