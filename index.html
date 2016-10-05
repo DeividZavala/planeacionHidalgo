@@ -12,10 +12,14 @@
 	<link rel="stylesheet" type="text/css" href="assets/css/estilos.css">
 </head>
 <body>
+    <a href="#/info">info</a>
+    <a href="#/login">Login</a>
     {{2+2}}
 
 
+    <main ng-view>
 
+    </main>
 
 
 
@@ -23,9 +27,13 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
     <!-- Angular -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
     <!-- AngularFire -->
     <script src="https://cdn.firebase.com/libs/angularfire/2.0.0/angularfire.min.js"></script>
     <script src="app/app.js"></script>
+    <script src="app/routes.js"></script>
+    <script src="app/components/login_component.js"></script>
+    <script src="app/components/info_component.js"></script>
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </body>
