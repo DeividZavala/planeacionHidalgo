@@ -144,6 +144,12 @@
 
 </section>
 <section style="text-align:center" class="container">
-	<a ng-hide="$ctrl.userLoggedIn()" href="#/login" class="btn btn-primary">Porfavor inicia sesión</a>
+
+	<div ng-hide="$ctrl.userLoggedIn()" class="alert alert-warning" role="alert">
+		Porfavor inicia sesión <a href="#/login" class="btn btn-primary">aquí</a>
+	</div>
+
+	
+
 </section>
 
