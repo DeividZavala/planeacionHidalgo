@@ -9,12 +9,19 @@
     function nuevoController($firebaseArray) {
         var nuevo = this;
 
+        nuevo.success = false;
+
+        this.err = function(){
+            return nuevo.success != false;
+        }
+
         var link = firebase.database().ref('/propuestas') 
         nuevo.propuestas = $firebaseArray(link)
 
         nuevo.add = addPropuesta;
 
         function addPropuesta() {
+            $('#load').show();
             console.log(nuevo.secretaria)
             console.log(nuevo.eje)
             nuevo.propuestas.$add({
@@ -26,9 +33,18 @@
                 "estrategia_general":nuevo.estrategia_general,
                 "indicador(es)_de_gestion":nuevo.indicadores_de_gestion,
                 "programas_asociados":nuevo.programas_asociados,
-                "fecha":nuevo.userEmail,
-                "hora":nuevo.fecha
+                "autor":nuevo.userEmail,
+                "fecha":Date.now(),
             })
+            .then(function(){
+                $('#load').hide();
+                nuevo.success = "Tu Proyecto fué guardado con éxito";
+                nuevo.err();
+
+            })
+            .catch(function(error){
+                alert('No se guardo, hubo un error intenta de nuevo'+error);
+            });
             console.log('listo')
         }
 
