@@ -1,1 +1,11 @@
-<h1>info</h1>
+<section class="container">
+    <h3>Propuestas</h3>
+    <div class="list-group row">
+        <div href="#" class="list-group-item" ng-repeat="propuesta in $ctrl.propuestas">
+            <h4 class="list-group-item-heading">{{propuesta.secretaria}}</h4>
+            <p class="list-group-item-text">
+                <a href="#/propuesta/{{propuesta.$id}}">Detalle</a>
+            </p>
+        </div>
+    </div>
+</section>

@@ -17,5 +17,8 @@
             .when('/nuevo',{
                 template:`<nuevo-component></nuevo-component>`
             })
+            .when('/propuesta/:id',{
+                template:`<detalle-component></detalle-component>`
+            })
     }
 })();
