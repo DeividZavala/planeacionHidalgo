@@ -112,12 +112,12 @@
 	<div class="col-md-2">
 		<span>Creado por: </span></div>
 		<div class="col-md-10">
-		<input disabled class="form-control" value="{{$ctrl.userEmail}}">
+		<input disabled class="form-control" value="{{$ctrl.userEmail}}" ng-model="$ctrl.userEmail">
 	</div>
 	<div class="col-md-2">
 		<span>Fecha:</span></div>
 		<div class="col-md-10">
-		<input disabled class="form-control" value="{{$ctrl.fecha | date :  'dd/MM/y hh:mm'}}">
+		<input disabled class="form-control" value="{{$ctrl.fecha | date :  'dd/MM/y hh:mm'}}" ng-model="$ctrl.fecha | date :  'dd/MM/y hh:mm'">
 	</div>
 	
 	</div>

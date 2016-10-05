@@ -25,7 +25,9 @@
                 "objetivo_general":nuevo.objetivo_general,
                 "estrategia_general":nuevo.estrategia_general,
                 "indicador(es)_de_gestion":nuevo.indicadores_de_gestion,
-                "programas_asociados":nuevo.programas_asociados
+                "programas_asociados":nuevo.programas_asociados,
+                "fecha":nuevo.userEmail,
+                "hora":nuevo.fecha
             })
             console.log('listo')
         }
