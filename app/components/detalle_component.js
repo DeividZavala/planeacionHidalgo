@@ -8,7 +8,6 @@
 
     function detalleController($routeParams) {
         var detalle = this;
-        detalle.propuesta= {};
         firebase.database().ref('propuestas/'+ $routeParams.id).on('value', function(snapshot) {
             detalle.propuesta = snapshot.val();
             console.log(detalle.propuesta)
