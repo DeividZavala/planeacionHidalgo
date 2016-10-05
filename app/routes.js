@@ -11,5 +11,8 @@
             .when('/info',{
                 template:`<info-component></login-component>`
             })
+            .when('/nuevo',{
+                template:`<nuevo-component></nuevo-component>`
+            })
     }
 })();
