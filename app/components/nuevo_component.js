@@ -6,30 +6,50 @@
         controller:nuevoController,
     }
 
-     // nuevoController.$inject = ['Auth','$location']
+    function nuevoController($firebaseArray) {
+        var nuevo = this;
 
-    function nuevoController(Auth) {
-        var self = this;
-        self.estate = null;
-        self.userEmail = null;
-        self.fecha = Date.now();
+        var link = firebase.database().ref('/propuestas') 
+        nuevo.propuestas = $firebaseArray(link)
+
+        nuevo.add = addPropuesta;
+
+        function addPropuesta() {
+            console.log(nuevo.secretaria)
+            console.log(nuevo.eje)
+            nuevo.propuestas.$add({
+                "secretaria":nuevo.secretaria,
+                "eje":nuevo.eje,
+                "indicador_estrategico":nuevo.indicador_estrategico,
+                "linea_estrategica":nuevo.linea_estrategica,
+                "objetivo_general":nuevo.objetivo_general,
+                "estrategia_general":nuevo.estrategia_general,
+                "indicador(es)_de_gestion":nuevo.indicadores_de_gestion,
+                "programas_asociados":nuevo.programas_asociados
+            })
+            console.log('listo')
+        }
+
+        nuevo.estate = null;
+        nuevo.userEmail = null;
+        nuevo.fecha = Date.now();
  
 
         
-        self.userLoggedIn = function(){
+        nuevo.userLoggedIn = function(){
             firebase.auth().onAuthStateChanged(function(user){
                 if (user) {
-                        self.estate = true;
-                        self.userEmail = user.email;
+                        nuevo.estate = true;
+                        nuevo.userEmail = user.email;
                         console.log(user);
                       } else {
-                        self.estate = false;
+                        nuevo.estate = false;
                       }
 
 
         });
 
-            return self.estate;
+            return nuevo.estate;
         };
     }
 

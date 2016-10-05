@@ -5,8 +5,11 @@
         controller:infoController
     }
 
-    function infoController() {
+    function infoController($firebaseArray) {
         var info = this;
+        var link = firebase.database().ref('/propuestas') 
+        info.propuestas = $firebaseArray(link)
+        console.log(info.propuestas)
     }
 
 
