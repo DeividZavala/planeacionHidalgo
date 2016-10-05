@@ -6,13 +6,12 @@
         templateUrl:'app/components/detalle.html'
     }
 
-    function detalleController($routeParams,$firebaseObject) {
+    function detalleController($routeParams) {
         var detalle = this;
-
-        var link = firebase.database().ref('/propuestas'+ $routeParams.id)
-        detalle.propuesta = $firebaseObject(link)
-        console.log(detalle.propuesta)
-
+        firebase.database().ref('propuestas/'+ $routeParams.id).on('value', function(snapshot) {
+            detalle.propuesta = snapshot.val();
+            console.log(detalle.propuesta)
+        });
 
     }
 

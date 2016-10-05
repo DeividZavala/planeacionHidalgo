@@ -29,6 +29,10 @@
         <div href="#" class="list-group-item" ng-repeat="propuesta in $ctrl.propuestas | filter:searchField">
             <h4 class="list-group-item-heading">{{propuesta.secretaria}}</h4>
             <p class="list-group-item-text">
+                <ul class="list-group">
+                    <li class="list-group-item">{{propuesta.eje}}</li>
+                    <li class="list-group-item">{{propuesta.autor}}</li>
+                </ul>
                 <a href="#/propuesta/{{propuesta.$id}}">Detalle</a>
             </p>
         </div>
