@@ -1,5 +1,12 @@
 
 <section ng-show="$ctrl.checkLogin()" class="container">
+    
+
+    <div class="panel panel-default">
+  <div class="panel-body">
+
+
+
     <h3>Propuestas</h3>
    <article class="row">	
     <div class="input-group input-group-lg col-md-4">
@@ -9,6 +16,13 @@
 	  <input ng-model="searchField" type="text" class="form-control" placeholder="Username" aria-describedby="sizing-addon1">
 	</div>
 </article>
+
+
+
+  </div>
+</div>
+
+
 
 
     <div class="list-group row">
@@ -26,7 +40,7 @@
 </section>
 
 <section class="container">
-    <div style="text-align:center;" ng-hide="$ctrl.userLoggedIn()" class="alert alert-warning" role="alert">
+    <div style="text-align:center;" ng-hide="$ctrl.checkLogin()" class="alert alert-warning" role="alert">
         Porfavor inicia sesión <a href="#/login" class="btn btn-primary">aquí</a>
     </div>
 </section>
