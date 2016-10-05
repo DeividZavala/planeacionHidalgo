@@ -11,13 +11,19 @@
 
 	<link rel="stylesheet" type="text/css" href="assets/css/estilos.css">
 </head>
-<body ng-controller="logout as logoutCtrl">
+<body ng-controller="indexCtrl as ic">
 
 	<section class="container">
 
 
 		<div class="page-header centrado">
-		  <img style="width:100px;" src="assets/images/logo.png"><h3 class="">Secretaria de Planeación desarrollo regional y metropolitano</h3><button style="float:right" class="btn btn-primary">Cerrar Sesión</button>
+		  <img style="width:100px;" src="assets/images/logo.png"><h3 class="">Secretaria de Planeación desarrollo regional y metropolitano</h3>
+          <button ng-show="ic.checkLogin()" ng-click="ic.logOut()" style="float:right" class="btn btn-primary">
+            Cerrar Sesión
+        </button>
+        <a href="#/login" ng-hide="ic.checkLogin()" style="float:right" class="btn btn-primary">
+            Iniciar Sesión
+        </a>
 		  <p style="text-align:center">Sistema centralizado de proyectos</p>
 
               <a href="#/info">info</a>
