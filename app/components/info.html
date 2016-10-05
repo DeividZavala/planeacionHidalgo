@@ -1,7 +1,9 @@
-<section class="container">
+
+<section ng-show="$ctrl.checkLogin()" class="container">
     <h3>Propuestas</h3>
+    <input value="searchField" name="searchField" placeholder="Filtrar"/>
     <div class="list-group row">
-        <div href="#" class="list-group-item" ng-repeat="propuesta in $ctrl.propuestas">
+        <div href="#" class="list-group-item" ng-repeat="propuesta in $ctrl.propuestas | filter:searchField">
             <h4 class="list-group-item-heading">{{propuesta.secretaria}}</h4>
             <p class="list-group-item-text">
                 <a href="#/propuesta/{{propuesta.$id}}">Detalle</a>
