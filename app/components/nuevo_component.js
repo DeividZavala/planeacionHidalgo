@@ -33,7 +33,7 @@
                 "estrategia_general":nuevo.estrategia_general,
                 "indicadores_de_gestion":nuevo.indicadores_de_gestion,
                 "programas_asociados":nuevo.programas_asociados,
-                "autor":nuevo.userEmail,
+                // "autor":nuevo.userEmail,
                 "fecha":Date.now(),
             })
             .then(function(){

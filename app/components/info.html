@@ -1,5 +1,5 @@
 
-<section ng-controller="checkController as elCheck" ng-show="elCheck.checkEstado()" class="container">
+<section ng-controller="checkController as elCheck" class="container">
     
 
     <div class="panel panel-default">
@@ -31,7 +31,7 @@
             <p class="list-group-item-text">
                 <ul class="list-group">
                     <li class="list-group-item">{{propuesta.eje}}</li>
-                    <li class="list-group-item">{{propuesta.autor}}</li>
+                    <li class="list-group-item">{{propuesta.indicador_estrategico}}</li>
                 </ul>
                 <a href="#/propuesta/{{propuesta.$id}}">Detalle</a>
             </p>
@@ -39,11 +39,11 @@
     </div>
 </section>
 
-<section class="container">
+<!-- <section class="container">
     <div style="text-align:center;" ng-hide="$ctrl.checkLogin()" class="alert alert-warning" role="alert">
         Porfavor inicia sesión <a href="#/login" class="btn btn-primary">aquí</a>
     </div>
-</section>
+</section> -->
 <!--
 <h1>Experimento:</h1>
  <div ng-controller="checkController as elCheck">
