@@ -1,5 +1,5 @@
 
-<section ng-show="$ctrl.checkLogin()" class="container">
+<section ng-controller="checkController as elCheck" ng-show="elCheck.checkEstado()" class="container">
     
 
     <div class="panel panel-default">
@@ -44,3 +44,9 @@
         Porfavor inicia sesión <a href="#/login" class="btn btn-primary">aquí</a>
     </div>
 </section>
+<!--
+<h1>Experimento:</h1>
+ <div ng-controller="checkController as elCheck">
+<h2 ng-show="elCheck.checkEstado()">Funcionó</h2>
+<h2 ng-hide="elCheck.checkEstado()">No Funcionó, {{elCheck.estado}}</h2>
+</div> -->

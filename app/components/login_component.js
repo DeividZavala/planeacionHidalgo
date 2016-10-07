@@ -5,12 +5,13 @@
         templateUrl:'app/components/login.html'
     }
 
-    function loginController(Auth,$location) {
+    function loginController($firebaseAuth,$location) {
         var self = this;
-        login.putos="putos todos";
         self.estado = null;
         self.email = null;
         self.erro = false;
+
+        self.auth = $firebaseAuth();
 
         this.err = function(){
             return self.erro != false;
@@ -19,7 +20,7 @@
        
         this.logg = function(){
             $('#load').show();
-            firebase.auth().signInWithEmailAndPassword(self.email, self.password)
+            self.auth.$signInWithEmailAndPassword(self.email, self.password)
             .then(function(response){
                 console.log(response);
 
@@ -35,7 +36,7 @@
         };
 
         this.checkLogin = function(){
-            firebase.auth().onAuthStateChanged(function(user) {
+            self.auth.$onAuthStateChanged(function(user) {
               if (user) {
                 self.estado = true;
                 self.email = user.email;
@@ -49,7 +50,7 @@
         };
 
         this.logOut = function(){
-            firebase.auth().signOut()
+            self.auth.$signOut()
             .then(function() {
                window.location.replace("/");
             }, function(error) {
@@ -64,6 +65,7 @@
     angular
         .module('palneacionHidalgo')
         .component('loginComponent',login)
+        
         .factory('Auth', authService);
 
         function authService($firebaseAuth){

@@ -5,25 +5,32 @@
         controller:infoController
     }
 
-    function infoController($firebaseArray) {
+    function infoController($firebaseArray,$firebaseAuth) {
         var info = this;
         var link = firebase.database().ref('/propuestas') 
-        info.propuestas = $firebaseArray(link)
-        console.log(info.propuestas)
+        info.propuestas = $firebaseArray(link);
+        console.log(info.propuestas);
 
-        this.checkLogin = function(){
-            firebase.auth().onAuthStateChanged(function(user) {
+        info.estado = false;
+        info.email = null;
+
+        info.auth = $firebaseAuth();
+
+
+        //checamos inmediatamente al usuario
+        info.auth.$onAuthStateChanged(function(user) {
               if (user) {
-                self.estado = true;
-                self.email = user.email;
+                info.estado = true;
+                info.email = user.email;
                 console.log(user);
               } else {
-                self.estado = false;
+                info.estado = false;
               }
             });
-            console.log(self.estado);
-            var esta = self.estado;
-            return self.estado;
+
+
+        this.checkLogin = function(){
+            return info.estado;
         };
     }
 
