@@ -1,11 +1,17 @@
 (function () {
     angular
-        .module('palneacionHidalgo',['firebase','ngRoute'])
+        .module('palneacionHidalgo',['ngRoute','firebase'])
         .controller('indexCtrl',indexCtrl);
 
-    function indexCtrl($location) {
+    function indexCtrl($location,$firebaseAuth) {
         var self = this;
         self.estado = null;
+        var auth = $firebaseAuth();
+        auth.$onAuthStateChanged(function(firebaseUser) {
+          self.firebaseUser = firebaseUser;
+          // console.log('user: ',firebaseUser)
+          self.email = firebaseUser.email;
+      });
 
         this.logOut = function(){
             firebase.auth().signOut().then(function() {
@@ -19,13 +25,13 @@
             firebase.auth().onAuthStateChanged(function(user) {
               if (user) {
                 self.estado = true;
-                self.email = user.email;
-                console.log(user);
+                // self.email = user.email;
+                // console.log(user);
               } else {
                 self.estado = false;
               }
             });
-            console.log(self.estado);
+            // console.log(self.estado);
             var esta = self.estado;
             return self.estado;
         };

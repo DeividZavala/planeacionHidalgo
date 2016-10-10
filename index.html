@@ -23,12 +23,23 @@
 
 		<div class="page-header centrado">
 		  <img style="width:100px;" src="assets/images/logo.png"><h3 class="">Secretaria de Planeación Desarrollo Regional y Metropolitano</h3>
-          <!-- <button ng-show="ic.checkLogin()" ng-click="ic.logOut()" style="float:right" class="btn btn-primary">
+
+<!-- Login -->
+
+          <button ng-show="ic.checkLogin()" ng-click="ic.logOut()" style="float:right" class="btn btn-primary">
             Cerrar Sesión
-        </button> -->
-        <!-- <a href="#/login" ng-hide="ic.checkLogin()" style="float:right" class="btn btn-primary">
+        </button>
+        <br>
+        <br>
+        <br>
+        <h6 ng-show="ic.checkLogin()" style="float:right">{{ic.email}}</h6>
+
+        <a href="#/login" ng-hide="ic.checkLogin()" style="float:right" class="btn btn-primary">
             Iniciar Sesión
-        </a> -->
+        </a>
+ <!-- Login -->
+
+
 		  <p style="text-align:center">Sistema centralizado de proyectos - <small>made by <a href="http://www.fixter.org">fixter.org</a></small></p>
 
                 <a href="#/info" class="btn btn-default navbar-btn">Revisar</a>
@@ -46,28 +57,32 @@
 
 
 
-
-
-
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <!-- Angular -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.js"></script>
+<!-- jquey -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <!-- Angular -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <!-- Angular routes -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.js"></script>
-    <!-- Firebase keys -->
-    <script src="https://www.gstatic.com/firebasejs/3.4.1/firebase.js"></script>
-    <script>
-    // Initialize Firebase
-    var config = {
-        apiKey: "AIzaSyCQWgp2tvE2Phv_A5Yq9RzvyMf0GDTfuBs",
-        authDomain: "planeacion-hidalgo.firebaseapp.com",
-        databaseURL: "https://planeacion-hidalgo.firebaseio.com",
-        storageBucket: "planeacion-hidalgo.appspot.com",
-        messagingSenderId: "679579674763"
-    };
-    firebase.initializeApp(config);
-    </script>
-<!-- AngularFire -->
-<script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+
+    <!-- AngularFire -->
+    <script src="https://cdn.firebase.com/libs/angularfire/2.0.1/angularfire.min.js"></script>
+        <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyCQWgp2tvE2Phv_A5Yq9RzvyMf0GDTfuBs",
+            authDomain: "planeacion-hidalgo.firebaseapp.com",
+            databaseURL: "https://planeacion-hidalgo.firebaseio.com",
+            storageBucket: "planeacion-hidalgo.appspot.com",
+            messagingSenderId: "679579674763"
+        };
+        firebase.initializeApp(config);
+        </script>
+
+
+
     <!-- Angular Module -->
     <script src="app/app.js"></script>
     <script src="app/routes.js"></script>

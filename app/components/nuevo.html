@@ -8,10 +8,13 @@
 
 	<form ng-submit="$ctrl.add()" class="container">
 <div class='row'>	
-<div class="col-md-2">
-<span>Secretaría</span></div>
+<!-- <div class="col-md-2"> -->
+<!--<span>Secretaría</span></div>
 <div class="col-md-10">
 	<select required class="form-control" ng-model="$ctrl.secretaria">
+		<option value="{{$ctrl.laSecretaria[0].}}">
+			{{$ctrl.laSecretaria[0].secretaria}}
+		</option>
 		<option value="">Selecciona una opción</option>
   		<option value="Secretaría de Desarrollo Agropecuario">Secretaría de Desarrollo Agropecuario</option>
   		<option value="Secretaría de Contraloría y Transparencia Gubernamental">Secretaría de Contraloría y Transparencia Gubernamental</option>
@@ -26,9 +29,10 @@
   		<option value="Secretaría de Planeación, Desarrollo Regional y Metropolitano">Secretaría de Planeación, Desarrollo Regional y Metropolitano</option>
   		<option value="Secretaría de Salud">Secretaría de Salud</option>
   		<option value="Secretaría de Seguridad Pública">Secretaría de Seguridad Pública</option>
-  		<option value="Secretaría de Turismo y Cultura">Secretaría de Turismo y Cultura</option>
+  		<option value="Secretaría de Turismo y Cultura">Secretaría de Turismo y Cultura</option> 
 	</select>
-</div>
+</div> -->
+<!--column 10-->
 <br>
 <br>
 <div  class="col-md-2">

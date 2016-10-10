@@ -22,12 +22,12 @@
             $('#load').show();
             self.auth.$signInWithEmailAndPassword(self.email, self.password)
             .then(function(response){
-                console.log(response);
+                // console.log(response);
 
                window.location.replace("/#/nuevo");
             })
             .catch(function(response){
-                console.log(response);
+                // console.log(response);
                 self.erro = 'Tu usuario y contraseña son incorrectos';
                 self.err();
                 $('#load').hide();
@@ -35,19 +35,19 @@
 
         };
 
-        this.checkLogin = function(){
-            self.auth.$onAuthStateChanged(function(user) {
-              if (user) {
-                self.estado = true;
-                self.email = user.email;
-                console.log(user);
-              } else {
-                self.estado = false;
-              }
-            });
-            console.log(self.estado);
-            return self.estado;
-        };
+        // this.checkLogin = function(){
+        //     self.auth.$onAuthStateChanged(function(user) {
+        //       if (user) {
+        //         self.estado = true;
+        //         self.email = user.email;
+        //         console.log(user);
+        //       } else {
+        //         self.estado = false;
+        //       }
+        //     });
+        //     console.log(self.estado);
+        //     return self.estado;
+        // };
 
         this.logOut = function(){
             self.auth.$signOut()

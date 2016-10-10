@@ -6,7 +6,7 @@
         controller:nuevoController,
     }
 
-    function nuevoController($firebaseArray) {
+    function nuevoController($firebaseArray,$firebaseAuth) {
 
         $('[data-toggle="tooltip"]').tooltip();
 
@@ -17,11 +17,43 @@
         self.estrategia = [];
         self.estrategia_lineas = [];
         self.elNuevo = {};
-
         nuevo.success = false;
-
-
         self.obes = [];
+        var auth = $firebaseAuth();
+        self.laSecretaria = [];
+
+// any time auth state changes, add the user data to scope
+        auth.$onAuthStateChanged(function(firebaseUser) {
+          self.firebaseUser = firebaseUser;
+          console.log(self.firebaseUser)
+          if(self.firebaseUser){
+            console.log(self.firebaseUser.uid);
+            var messagesRef = firebase.database().ref().child("usuarios");
+            // self.usuarios = $firebaseArray(messagesRef);
+            var query = messagesRef.orderByKey().equalTo(self.firebaseUser.uid);
+            self.secreta = $firebaseArray(query);
+            console.log(self.secretaria);
+
+            self.secreta.$loaded()
+                .then(function(){
+
+                    angular.forEach(self.secreta, function(lista) {
+                        console.log(lista);
+                        self.laSecretaria.push({
+                            nombre:lista.nombre,
+                            secretaria:lista.secretaria,
+                        });
+                    });
+                }); //then
+            console.log(self.laSecretaria);
+
+
+
+          }else{
+            window.location.replace("/#/login");
+          }
+        });
+
 
         self.setObjetivos = function(){
             if (self.eje === "Gobierno Honesto, Cercano y Moderno"){
@@ -114,7 +146,8 @@
             }
             self.estrategia
             nuevo.propuestas.$add({
-                "secretaria":nuevo.secretaria,
+                // "secretaria":nuevo.secretaria,
+                "secretaria":self.laSecretaria[0].secretaria,
                 "eje":nuevo.eje,
                 "indicador_estrategico":nuevo.indicador_estrategico,
                 "linea_estrategica":nuevo.linea_estrategica,
@@ -152,10 +185,12 @@
                 if (user) {
                         nuevo.estate = true;
                         nuevo.userEmail = user.email;
-                        console.log(user);
-                      } else {
+                        // console.log(user);
+                } else {
                         nuevo.estate = false;
-                      }
+                        window.location.replace("/#/login");
+
+                }
 
 
         });
