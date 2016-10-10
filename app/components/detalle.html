@@ -13,6 +13,15 @@
             </div>
 
             <div class="panel panel-info">
+                <div class="panel-heading">Objetivos Estratégicos</div>
+                <div class="panel-body" style="color:black">
+                    {{$ctrl.propuesta.objetivos_estrategicos}}
+                </div>
+            </div>
+
+            
+
+            <div class="panel panel-info">
                 <div class="panel-heading">Línea Estratégica</div>
                 <div class="panel-body" style="color:black">
                     {{$ctrl.propuesta.linea_estrategica}}
@@ -23,6 +32,8 @@
                 <div class="panel-heading">Objetivo General</div>
                 <div class="panel-body" style="color:black">
                     {{$ctrl.propuesta.objetivo_general}}
+                    <p ng-repeat="e in $ctrl.propuesta.estrategias_objetivo">*- {{e}}</p>
+
                 </div>
             </div>
 
@@ -37,6 +48,7 @@
                 <div class="panel-heading">Estrategia General</div>
                 <div class="panel-body" style="color:black">
                     {{$ctrl.propuesta.estrategia_general}}
+                    <p ng-repeat="e in $ctrl.propuesta.estrategia_lineas_accion">*- {{e}}</p>
                 </div>
             </div>
 

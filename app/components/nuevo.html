@@ -11,7 +11,8 @@
 <div class="col-md-2">
 <span>Secretaría</span></div>
 <div class="col-md-10">
-	<select class="form-control" ng-model="$ctrl.secretaria">
+	<select required class="form-control" ng-model="$ctrl.secretaria">
+		<option value="">Selecciona una opción</option>
   		<option value="Secretaría de Desarrollo Agropecuario">Secretaría de Desarrollo Agropecuario</option>
   		<option value="Secretaría de Contraloría y Transparencia Gubernamental">Secretaría de Contraloría y Transparencia Gubernamental</option>
   		<option value="Secretaría de Desarrollo Económico">Secretaría de Desarrollo Económico</option>
@@ -33,7 +34,8 @@
 <div  class="col-md-2">
 <span>Eje</span></div>
 <div class="col-md-10">
-	<select class="form-control" ng-model="$ctrl.eje">
+	<select required class="form-control" ng-model="$ctrl.eje">
+		<option value="">Selecciona una opción</option>
   		<option value="Gobierno Honesto, Cercano y Moderno">1. Gobierno Honesto, Cercano y Moderno</option>
   		<option value="Hidalgo Próspero y Dinámico">2. Hidalgo Próspero y Dinámico</option>
   		<option value="Hidalgo Humano e Igualitario">3. Hidalgo Humano e Igualitario</option>
@@ -43,27 +45,55 @@
 </div>
 <br>
 <br>
+
+	<div class="col-md-2">
+		<span>Objetivos estratégicos</span>
+	</div>
+	<div class="col-md-10">
+		<select ng-click="$ctrl.setObjetivos()" required class="form-control" ng-model="$ctrl.obest">
+		<option value="">Selecciona una opción</option>
+  		<option ng-repeat="oe in $ctrl.obes" value="{{oe}}">{{oe}}</option>
+	</select>
+	</div>
+
+
+
+
+
+
 	<div class="col-md-2">
 		<span>Línea Estratégica de acción</span></div>
 		<div class="col-md-10">
-		<textarea class="form-control" ng-model="$ctrl.linea_estrategica"></textarea>
+		<textarea required class="form-control" ng-model="$ctrl.linea_estrategica"></textarea>
 
 	</div>
 	<br>
 	<br>
 	<br>
-	<div class="col-md-2">
-		<span>Objetivo General</span></div>
-		<div class="col-md-10">
-		<textarea class="form-control" ng-model="$ctrl.objetivo_general"></textarea>
+	<div class="col-md-2 padre">
+		<span>Objetivo General</span>
 	</div>
+		<div class="col-md-10">
+		<textarea required class="form-control" ng-model="$ctrl.objetivo_general"></textarea>
+		<div ng-click="$ctrl.newInput()" id="objetivo" class="btn" data-toggle="tooltip" data-placement="right" title="Agregar estrategia">
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</div>
+		<!-- Esto se llena dinamicamente -->
+		<div id="estrategias">
+		
+		
+		</div>
+		
+		</div>
+
 	<br>
 	<br>
 	<br>
 <div class="col-md-2">
 <span>Indicador Estratégico</span></div>
 <div class="col-md-10">
-	<select class="form-control" ng-model="$ctrl.indicador_estrategico">
+	<select required class="form-control" ng-model="$ctrl.indicador_estrategico">
+		<option value="">Selecciona una opción</option>
   		<option class="1" value='Tasa de Prevalencia de Corrupción (INEGI)'>Tasa de Prevalencia de Corrupción (INEGI)</option>
   		<option class="1" value='Proporción de la población que se sintió satisfecha o muy satisfecha en la realización de trámites y solicitudes de servicios con alguna dependencia estatal (INEGI)'>Proporción de la población que se sintió satisfecha o muy satisfecha en la realización de trámites y solicitudes de servicios con alguna dependencia estatal (INEGI)</option>
   		<option class="1" value='Porcentaje de trámites y servicios públicos del tipo transaccional que se ofrecen en línea en la Administración Pública Estatal (INEGI)'>Porcentaje de trámites y servicios públicos del tipo transaccional que se ofrecen en línea en la Administración Pública Estatal (INEGI)</option>
@@ -88,19 +118,34 @@
 
 	</div>	
 	<div class="col-md-2">
-		<span>Estrategia General</span></div>
+		<span>Estrategia General</span>
+	</div>
 		<div class="col-md-10">
-		<textarea class="form-control" ng-model="$ctrl.estrategia_general"></textarea></div>
+		<textarea required class="form-control" ng-model="$ctrl.estrategia_general"></textarea>
+	
+		<div ng-click="$ctrl.newInput2()" id="objetivo" class="btn" data-toggle="tooltip" data-placement="left" title="Agregar linea de acción">
+		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+		</div>
+		
+		<!-- Esto se llena dinamicamente -->
+		<div class="col-md-10" id="estrategias2">
+		
+		
+		</div>
+
+	</div><!--col m10-->
 		<br>
-		<br>
-		<br>
-		<br>
-		<br>
-		<br>
+	<br>
+	<br>
+		
+		
+
+
+
 	<div class="col-md-2">
 		<span>Programas Asociados</span></div>
 		<div class="col-md-10">
-		<textarea class="form-control" ng-model="$ctrl.programas_asociados"></textarea>
+		<textarea required class="form-control" ng-model="$ctrl.programas_asociados"></textarea>
 	</div>
 		<br>
 		<br>
@@ -108,7 +153,7 @@
 	<div class="col-md-2">
 		<span>Indicador(es) de Gestión</span></div>
 		<div class="col-md-10">
-		<textarea class="form-control" ng-model="$ctrl.indicadores_de_gestion"></textarea></div>
+		<textarea required class="form-control" ng-model="$ctrl.indicadores_de_gestion"></textarea></div>
 		<br>
 		<br>
 		<br>

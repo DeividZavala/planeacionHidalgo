@@ -13,3 +13,11 @@
 	background:#b71c1c;
 	border-color:#4caf50;
 }
+.padre{
+	position: relative;
+}
+.mijo{
+	position: absolute;
+	right: -30px;
+	top:20px;
+}
