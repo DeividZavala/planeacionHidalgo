@@ -1,102 +1,88 @@
-<section class="container">
+<article class="container">
 
-<div style="display:none;text-align:center" id="load">
-	<img src="http://www.chefdtv.com/wp-content/themes/culinier-theme/images/loader.gif">
-</div>
-
-<div ng-show="$ctrl.err()" class="alert alert-success" role="alert">{{$ctrl.success}}</div>
-
-	<form ng-submit="$ctrl.add()" class="container">
-<div class='row'>	
-<!-- <div class="col-md-2"> -->
-<!--<span>Secretaría</span></div>
-<div class="col-md-10">
-	<select required class="form-control" ng-model="$ctrl.secretaria">
-		<option value="{{$ctrl.laSecretaria[0].}}">
-			{{$ctrl.laSecretaria[0].secretaria}}
-		</option>
-		<option value="">Selecciona una opción</option>
-  		<option value="Secretaría de Desarrollo Agropecuario">Secretaría de Desarrollo Agropecuario</option>
-  		<option value="Secretaría de Contraloría y Transparencia Gubernamental">Secretaría de Contraloría y Transparencia Gubernamental</option>
-  		<option value="Secretaría de Desarrollo Económico">Secretaría de Desarrollo Económico</option>
-  		<option value="Secretaria de Desarrollo Social">Secretaria de Desarrollo Social</option>
-  		<option value="Secretaría de Finanzas y Administración">Secretaría de Finanzas y Administración</option>
-  		<option value="Secretaría de Educación Pública">Secretaría de Educación Pública</option>
-  		<option value="Secretaría de Gobierno">Secretaría de Gobierno</option>
-  		<option value="Secretaría del Trabajo y Previsión Social">Secretaría del Trabajo y Previsión Social</option>
-  		<option value="Secretaría del Medio Ambiente y Recursos Naturales">Secretaría del Medio Ambiente y Recursos Naturales</option>
-  		<option value="Secretaría de Obras Públicas y Ordenamiento Territorial">Secretaría de Obras Públicas y Ordenamiento Territorial</option>
-  		<option value="Secretaría de Planeación, Desarrollo Regional y Metropolitano">Secretaría de Planeación, Desarrollo Regional y Metropolitano</option>
-  		<option value="Secretaría de Salud">Secretaría de Salud</option>
-  		<option value="Secretaría de Seguridad Pública">Secretaría de Seguridad Pública</option>
-  		<option value="Secretaría de Turismo y Cultura">Secretaría de Turismo y Cultura</option> 
-	</select>
-</div> -->
-<!--column 10-->
-<br>
-<br>
-<div  class="col-md-2">
-<span>Eje</span></div>
-<div class="col-md-10">
-	<select required class="form-control" ng-model="$ctrl.eje">
+<section id="primera" class="espacio">
+<form class="row" ng-submit="$ctrl.continuar('#primera','#segunda')">
+	
+<div class="info well row">
+	<div class="col-md-2">Eje</div>
+	<div class="col-md-10">
+		<select id="eje" ng-change="$ctrl.setObjetivos()"  required class="form-control" ng-model="$ctrl.eje">
 		<option value="">Selecciona una opción</option>
   		<option value="Gobierno Honesto, Cercano y Moderno">1. Gobierno Honesto, Cercano y Moderno</option>
   		<option value="Hidalgo Próspero y Dinámico">2. Hidalgo Próspero y Dinámico</option>
   		<option value="Hidalgo Humano e Igualitario">3. Hidalgo Humano e Igualitario</option>
   		<option value="Un Hidalgo Seguro con Justicia y en Paz">4. Un Hidalgo Seguro con Justicia y en Paz</option>
   		<option value="Un Hidalgo con Desarrollo Sustentable">5. Un Hidalgo con Desarrollo Sustentable</option>
-	</select>
-</div>
-<br>
-<br>
-
-	<div class="col-md-2">
-		<span>Objetivos estratégicos</span>
+		</select>
 	</div>
+</div>
+
+
+<div class="info well row">
+	<div class="col-md-2">Objetivos estratégicos</div>
 	<div class="col-md-10">
-		<select ng-click="$ctrl.setObjetivos()" required class="form-control" ng-model="$ctrl.obest">
+		<select required class="form-control col-md-6" ng-model="$ctrl.obest">
 		<option value="">Selecciona una opción</option>
   		<option ng-repeat="oe in $ctrl.obes" value="{{oe}}">{{oe}}</option>
-	</select>
+		</select>
+	</div>
+</div>
+
+
+
+
+
+
+
+<div class="col-md-12 col-md-offset-10">
+<input value="Continuar" class="btn btn-lg btn-warning" type="submit">
+</div>
+
+</form>
+</section>
+
+<!-- segunda seccion -->
+
+<section class="oculto" id="segunda">
+<form ng-submit="$ctrl.continuar('#segunda','#tercera')">
+
+
+<div class="info well row">
+	<div class="col-md-2">Objetivo General</div>
+	<div class="col-md-10">
+		<textarea required class="form-control" style="width:100%;height:100px;"></textarea>
+	</div>
+</div>
+<div class="info well row">
+	<div class="col-md-2">Lineas de Acción</div>
+	<div class="col-md-10 row">
+		<div class="col-md-6">
+			<span>Linea de acción #1</span>
+			<textarea class="form-control" style="width:100%;height:50px;"></textarea>
+		</div>
+
+		<div class="col-md-6">
+			<span>Linea de acción #2</span>
+			<textarea class="form-control" style="width:100%;height:50px;"></textarea>
+		</div>
+
+		<div class="col-md-6">
+			<span>Linea de acción #3</span>
+			<textarea class="form-control" style="width:100%;height:50px;"></textarea>
+		</div>
+
+		<div class="col-md-6">
+			<span>Linea de acción #4</span>
+			<textarea class="form-control" style="width:100%;height:50px;"></textarea>
+		</div>
 	</div>
 
+</div>
 
-
-
-
-
-	<div class="col-md-2">
-		<span>Línea Estratégica de acción</span></div>
-		<div class="col-md-10">
-		<textarea required class="form-control" ng-model="$ctrl.linea_estrategica"></textarea>
-
-	</div>
-	<br>
-	<br>
-	<br>
-	<div class="col-md-2 padre">
-		<span>Objetivo General</span>
-	</div>
-		<div class="col-md-10">
-		<textarea required class="form-control" ng-model="$ctrl.objetivo_general"></textarea>
-		<div ng-click="$ctrl.newInput()" id="objetivo" class="btn" data-toggle="tooltip" data-placement="right" title="Agregar estrategia">
-		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-		</div>
-		<!-- Esto se llena dinamicamente -->
-		<div id="estrategias">
-		
-		
-		</div>
-		
-		</div>
-
-	<br>
-	<br>
-	<br>
-<div class="col-md-2">
-<span>Indicador Estratégico</span></div>
-<div class="col-md-10">
-	<select required class="form-control" ng-model="$ctrl.indicador_estrategico">
+<div class="info well row">
+	<div class="col-md-2">Indicador Estratégico</div>
+	<div class="col-md-10">
+		<select required class="form-control" ng-model="$ctrl.indicador_estrategico">
 		<option value="">Selecciona una opción</option>
   		<option class="1" value='Tasa de Prevalencia de Corrupción (INEGI)'>Tasa de Prevalencia de Corrupción (INEGI)</option>
   		<option class="1" value='Proporción de la población que se sintió satisfecha o muy satisfecha en la realización de trámites y solicitudes de servicios con alguna dependencia estatal (INEGI)'>Proporción de la población que se sintió satisfecha o muy satisfecha en la realización de trámites y solicitudes de servicios con alguna dependencia estatal (INEGI)</option>
@@ -118,86 +104,63 @@
   		<option class="5" value='Superficie de áreas naturales con acciones de conservación y/o aprovechamiento de competencia federal, estatal y municipal (INEGI)'>Superficie de áreas naturales con acciones de conservación y/o aprovechamiento de competencia federal, estatal y municipal (INEGI)</option>
   		<option class="5" value='Porcentaje de Residuos Sólidos Urbanos (RSU) y de Manejo Especial (RME) con manejo adecuado (INEGI)'>* Porcentaje de Residuos Sólidos Urbanos (RSU) y de Manejo Especial (RME) con manejo adecuado (INEGI)</option>
 	</select>
-	<br>
-
-	</div>	
-	<div class="col-md-2">
-		<span>Estrategia General</span>
 	</div>
-		<div class="col-md-10">
-		<textarea required class="form-control" ng-model="$ctrl.estrategia_general"></textarea>
-	
-		<div ng-click="$ctrl.newInput2()" id="objetivo" class="btn" data-toggle="tooltip" data-placement="left" title="Agregar linea de acción">
-		<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-		</div>
-		
-		<!-- Esto se llena dinamicamente -->
-		<div class="col-md-10" id="estrategias2">
-		
-		
-		</div>
-
-	</div><!--col m10-->
-		<br>
-	<br>
-	<br>
-		
-		
+</div>
 
 
-
-	<div class="col-md-2">
-		<span>Programas Asociados</span></div>
-		<div class="col-md-10">
-		<textarea required class="form-control" ng-model="$ctrl.programas_asociados"></textarea>
-	</div>
-		<br>
-		<br>
-		<br>
-	<div class="col-md-2">
-		<span>Indicador(es) de Gestión</span></div>
-		<div class="col-md-10">
-		<textarea required class="form-control" ng-model="$ctrl.indicadores_de_gestion"></textarea></div>
-		<br>
-		<br>
-		<br>
-	
-<!-- 	<div class="col-md-2">
-		<span>Creado por: </span></div>
-		<div class="col-md-10">
-		<input disabled class="form-control" value="{{$ctrl.userEmail}}" ng-model="$ctrl.userEmail">
-	</div> -->
-	<br>
-	<br>
-	<div class="col-md-2">
-		<span>Fecha:</span></div>
-		<div class="col-md-10">
-		<input disabled class="form-control" placeholder="{{$ctrl.fecha | date :  'dd/MM/y hh:mm'}}" value="">
-	</div>
-	
+	<div class="col-md-12 col-md-offset-10">
+	<input value="Continuar" class="btn btn-lg btn-warning" type="submit">
 	</div>
 
-<div style='text-align:center;'>
-<br>
+</form>
+</section>
+
+<!-- Tercera seccion -->
+
+<section class="oculto" id="tercera">
+<form ng-submit="$ctrl.continuar('#tercera','#cuarta')">
 
 
-
-<input ng-hide="$ctrl.err()" class="btn btn-primary" type="submit" style='bmargin:0 auto'>
+<div class="info well row">
+	<div class="col-md-2">Programas Asociados</div>
+	<div class="col-md-10">
+		<textarea required class="form-control" style="width:100%;height:100px;"></textarea>
 	</div>
-	
+</div>
 
+<div class="info well row">
+	<div class="col-md-2">Indicador(es) de Gestión</div>
+	<div class="col-md-10">
+		<textarea required class="form-control" style="width:100%;height:100px;"></textarea>
+	</div>
+</div>
+
+
+
+	<div class="col-md-12 col-md-offset-10">
+	<input value="Continuar" class="btn btn-lg btn-warning" type="submit">
+	</div>
 
 
 </form>
-
 </section>
-<!-- <section style="text-align:center" class="container">
 
-	<div ng-hide="$ctrl.userLoggedIn()" class="alert alert-warning" role="alert">
-		Porfavor inicia sesión <a href="#/login" class="btn btn-primary">aquí</a>
-	</div>
+<!-- cuarta seccion -->
 
-	
+<section class="oculto" id="cuarta">
+<form ng-submit="$ctrl.continuar('#cuarta','#quinta')">
+<input type="text" required>
+<input type="submit">
+</form>
+</section>
 
-</section> -->
+<!-- quinta seccion -->
 
+<section class="oculto" id="quinta">
+<form ng-submit="">
+<input type="text" required>
+<input type="submit">
+</form>
+</section>
+
+</article>

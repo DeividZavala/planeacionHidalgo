@@ -66,10 +66,11 @@
                 'Cero Tolerancia a la Corrupción',
                 'Reingeniería de Gobierno'
             ];
+            return true;
 
         } //if
 
-        if (self.eje === "Hidalgo Próspero y Dinámico"){
+        else if (self.eje === "Hidalgo Próspero y Dinámico"){
             self.obes = [
                 'Políticas Económicas con Participación Social',
                 'Atracción de Inversiones',
@@ -78,10 +79,11 @@
                 'Turismo, Palanca de Desarrollo',
                 'Un Campo Moderno y Productivo'
             ];
+            return true;
 
         } //if
 
-        if (self.eje === "Hidalgo Humano e Igualitario"){
+         else if (self.eje === "Hidalgo Humano e Igualitario"){
             self.obes = [
                 'Desarrollo Social, Integral y Solidario',
                 'Educación de Relevancia y Equipada',
@@ -90,9 +92,10 @@
                 'Cultura Física y Deporte',
                 'Arte y Cultura'
             ];
+            return true;
 
         } //if
-        if (self.eje === "Un Hidalgo Seguro con Justicia y en Paz"){
+        else if (self.eje === "Un Hidalgo Seguro con Justicia y en Paz"){
             self.obes = [
                 'Gobernabilidad',
                 'Derechos Humanos',
@@ -101,10 +104,11 @@
                 'Readaptación y Reinserción Social',
                 'Protección Civil'
             ];
+            return true;
 
         } //if
 
-        if (self.eje === "Un Hidalgo con Desarrollo Sustentable"){
+        else if (self.eje === "Un Hidalgo con Desarrollo Sustentable"){
             self.obes = [
                 'Infraestructura Sustentable',
                 'Urbanismo Sustentable',
@@ -118,9 +122,16 @@
                 'Compromiso Global'
 
             ];
+            return true;
 
         } //if
+        else{
+           
+            return false;
+        }
     }//setObjetivos
+
+    $('#eje').on('click',self.setObjetivos());
         
 
         this.err = function(){
@@ -218,6 +229,22 @@
         self.less = function(){
             self.helper = self.helper - 1;
         } //no sirve
+
+
+
+
+
+
+        //desman para las animaciones
+
+        self.continuar = function(seccion,siguiente){
+        $(seccion).addClass('animated slideOutLeft');
+        $(siguiente).show();
+        $(siguiente).addClass('animated slideInRight');
+        $(seccion).slideToggle();
+        }
+
+
 
     }// controller
 

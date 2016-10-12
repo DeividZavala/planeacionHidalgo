@@ -21,3 +21,10 @@
 	right: -30px;
 	top:20px;
 }
+
+.oculto{
+	display: none;
+}
+.espacio{
+	margin-top: 50px;
+}
