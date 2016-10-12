@@ -81,8 +81,8 @@
         
 
 
-    routes.$inject = ['$routeProvider'];
-    function routes($routeProvider) {
+    routes.$inject = ['$routeProvider','$locationProvider'];
+    function routes($routeProvider,$locationProvider) {
         $routeProvider
             .when('/login',{
                 template:`<login-component></login-component>`
@@ -109,12 +109,6 @@
                 })
 
 
-
-
-
-
-
-
             .when('/propuesta/:id',{
                 template:`<detalle-component></detalle-component>`
             })
@@ -122,6 +116,7 @@
             .otherwise({
                 redirectTo: '/'
             });
+            $locationProvider.html5Mode([true]);
 
             }
 
