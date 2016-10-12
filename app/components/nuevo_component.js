@@ -141,49 +141,53 @@
         var link = firebase.database().ref('/propuestas') 
         nuevo.propuestas = $firebaseArray(link)
 
-        nuevo.add = addPropuesta;
+        // nuevo.add = addPropuesta;
 
-        function addPropuesta() {
-            $('#load').show();
-            console.log(nuevo.secretaria)
-            console.log(nuevo.eje)
-            for (i=1;i <= self.helper;i++){
-                console.log(i);
-                self.estrategia.push($('#es'+i).val());
-            }
-            for (i=1;i <= self.helper2;i++){
-                console.log(i);
-                self.estrategia_lineas.push($('#es'+i).val());
-            }
-            self.estrategia
-            nuevo.propuestas.$add({
-                // "secretaria":nuevo.secretaria,
-                "secretaria":self.laSecretaria[0].secretaria,
-                "eje":nuevo.eje,
-                "indicador_estrategico":nuevo.indicador_estrategico,
-                "linea_estrategica":nuevo.linea_estrategica,
-                "objetivo_general":nuevo.objetivo_general,
-                "estrategia_general":nuevo.estrategia_general,
-                "indicadores_de_gestion":nuevo.indicadores_de_gestion,
-                "programas_asociados":nuevo.programas_asociados,
-                // "autor":nuevo.userEmail,
-                "fecha":Date.now(),
-                //probando dinamicos
-                "estrategias_objetivo":self.estrategia,
-                "estrategia_lineas_accion":self.estrategia_lineas,
-                "objetivos_estrategicos":self.obest
-            })
-            .then(function(){
-                $('#load').hide();
-                nuevo.success = "Tu Proyecto fué guardado con éxito";
-                nuevo.err();
+        self.addPropuesta = function() {
 
-            })
-            .catch(function(error){
-                alert('No se guardo, hubo un error intenta de nuevo'+error);
-            });
-            console.log('listo')
-        }
+            $('#loader_a').hide();
+            $('#loader_b').show();
+
+            // $('#load').show();
+            // console.log(nuevo.secretaria)
+            // console.log(nuevo.eje)
+            // for (i=1;i <= self.helper;i++){
+            //     console.log(i);
+            //     self.estrategia.push($('#es'+i).val());
+            // }
+            // for (i=1;i <= self.helper2;i++){
+            //     console.log(i);
+            //     self.estrategia_lineas.push($('#es'+i).val());
+            // }
+            // self.estrategia
+            // nuevo.propuestas.$add({
+            //     // "secretaria":nuevo.secretaria,
+            //     "secretaria":self.laSecretaria[0].secretaria,
+            //     "eje":nuevo.eje,
+            //     "indicador_estrategico":nuevo.indicador_estrategico,
+            //     "linea_estrategica":nuevo.linea_estrategica,
+            //     "objetivo_general":nuevo.objetivo_general,
+            //     "estrategia_general":nuevo.estrategia_general,
+            //     "indicadores_de_gestion":nuevo.indicadores_de_gestion,
+            //     "programas_asociados":nuevo.programas_asociados,
+            //     // "autor":nuevo.userEmail,
+            //     "fecha":Date.now(),
+            //     //probando dinamicos
+            //     "estrategias_objetivo":self.estrategia,
+            //     "estrategia_lineas_accion":self.estrategia_lineas,
+            //     "objetivos_estrategicos":self.obest
+            // })
+            // .then(function(){
+            //     $('#load').hide();
+            //     nuevo.success = "Tu Proyecto fué guardado con éxito";
+            //     nuevo.err();
+
+            // })
+            // .catch(function(error){
+            //     alert('No se guardo, hubo un error intenta de nuevo'+error);
+            // });
+            // console.log('listo')
+        } //add propuesta
 
         nuevo.estate = null;
         nuevo.userEmail = null;
@@ -238,10 +242,20 @@
         //desman para las animaciones
 
         self.continuar = function(seccion,siguiente){
-        $(seccion).addClass('animated slideOutLeft');
-        $(siguiente).show();
-        $(siguiente).addClass('animated slideInRight');
-        $(seccion).slideToggle();
+            $(seccion).addClass('animated slideOutLeft');
+            $(siguiente).removeClass('slideOutRight slideOutLeft slideInRight slideInLeft');
+            $(siguiente).slideToggle();
+            $(siguiente).addClass('animated slideInRight');
+            $(seccion).slideToggle();
+        }
+
+        self.volver = function(seccion,atraz){
+            $(seccion).addClass('slideOutRight');
+            $(atraz).removeClass('slideOutRight slideOutLeft slideInRight slideInLeft');
+            $(atraz).slideToggle();
+            $(atraz).addClass('slideInLeft');
+            $(seccion).slideToggle();
+
         }
 
 

@@ -107,9 +107,12 @@
 	</div>
 </div>
 
+	<div class="col-md-4">
+		<div ng-click="$ctrl.volver('#segunda','#primera')" class="btn btn-lg btn-danger">Volver Atraz</div>
+	</div>
 
-	<div class="col-md-12 col-md-offset-10">
-	<input value="Continuar" class="btn btn-lg btn-warning" type="submit">
+	<div class="col-md-4 col-md-offset-4">
+		<input value="Continuar" class="btn btn-lg btn-warning" type="submit">
 	</div>
 
 </form>
@@ -136,8 +139,11 @@
 </div>
 
 
+	<div class="col-md-4">
+		<div ng-click="$ctrl.volver('#tercera','#segunda')" class="btn btn-lg btn-danger">Volver Atraz</div>
+	</div>
 
-	<div class="col-md-12 col-md-offset-10">
+	<div class="col-md-4 col-md-offset-4">
 	<input value="Continuar" class="btn btn-lg btn-warning" type="submit">
 	</div>
 
@@ -147,20 +153,25 @@
 
 <!-- cuarta seccion -->
 
-<section class="oculto" id="cuarta">
-<form ng-submit="$ctrl.continuar('#cuarta','#quinta')">
-<input type="text" required>
-<input type="submit">
+<section style="text-align:center" class="oculto" id="cuarta">
+<form class="row" ng-submit="$ctrl.addPropuesta()">
+
+<h2>¡Felicidades haz completado un proyecto!</h2>
+
+<div class="col-md-6">
+<h4>¿Todo está bien?, puedes volver para revisar:</h4>
+<div ng-click="$ctrl.volver('#cuarta','#tercera')" class="btn btn-lg btn-danger">Volver Atraz</div>
+</div>
+
+<div class="col-md-6">
+<h4>Si todo esta correcto puedes subir tu proyecto:</h4>
+<input id="loader_a" class="btn btn-lg btn-success" value="Subir" type="submit">
+<img class="oculto" id="loader_b" src="http://www.chefdtv.com/wp-content/themes/culinier-theme/images/loader.gif">
+</div>
+
+
 </form>
 </section>
 
-<!-- quinta seccion -->
-
-<section class="oculto" id="quinta">
-<form ng-submit="">
-<input type="text" required>
-<input type="submit">
-</form>
-</section>
 
 </article>
