@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module('palneacionHidalgo',['ngRoute','firebase'])
+        .module('palneacionHidalgo',['ngRoute','firebase']) 
         .controller('indexCtrl',indexCtrl);
 
     function indexCtrl($location,$firebaseAuth) {
