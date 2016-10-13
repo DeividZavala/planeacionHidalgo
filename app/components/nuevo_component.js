@@ -22,6 +22,12 @@
         var auth = $firebaseAuth();
         self.laSecretaria = [];
 
+        //formulario fancy
+        self.propuesta = {};
+        self.lineasAccion = [];
+        //display mensajes
+        self.mensaje = {};
+
 // any time auth state changes, add the user data to scope
         auth.$onAuthStateChanged(function(firebaseUser) {
           self.firebaseUser = firebaseUser;
@@ -56,6 +62,7 @@
 
 
         self.setObjetivos = function(){
+            self.eje = self.propuesta.eje
             if (self.eje === "Gobierno Honesto, Cercano y Moderno"){
             self.obes = [
                 'Finanzas Públicas',
@@ -148,6 +155,36 @@
             $('#loader_a').hide();
             $('#loader_b').show();
 
+
+            nuevo.propuestas.$add({
+                secretaria:self.laSecretaria[0].secretaria,
+                eje:self.propuesta.eje,
+                objetivo_estrategico:self.propuesta.objetivo_estrategico,
+                objetivo_general:self.propuesta.objetivo_general,
+                lineas_de_accion:self.lineasAccion,
+                indicador_estrategico:self.propuesta.indicador_estrategico,
+                programas_asociados:self.propuesta.programas_asociados,
+                indicadores_de_gestion:self.propuesta.indicadores_de_gestion,
+                fecha:Date.now(),
+                user:self.firebaseUser.uid
+            })
+            .then(function(){
+                self.mensaje.activo = true;
+                self.mensaje.success = true;
+                self.mensaje.msj = "Tu proyecto fué agregado con éxito";
+
+            })
+            .catch(function(){
+                self.mensaje.activo = true;
+                self.mensaje.error = true;
+                self.mensaje.msj = "Ocurrio un error no se pudo guardar, intentalo nuevamente";
+
+                $('#loader_a').show();
+                $('#loader_b').hide();
+            })
+            ;
+
+
             // $('#load').show();
             // console.log(nuevo.secretaria)
             // console.log(nuevo.eje)
@@ -187,6 +224,8 @@
             //     alert('No se guardo, hubo un error intenta de nuevo'+error);
             // });
             // console.log('listo')
+
+
         } //add propuesta
 
         nuevo.estate = null;
