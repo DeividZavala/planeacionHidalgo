@@ -2,8 +2,38 @@
 
 <section id="primera" class="espacio">
 <form class="row" ng-submit="$ctrl.continuar('#primera','#segunda')">
+
+<div ng-show="$ctrl.showSecretaria" class="info well row">
+
+	<div class="col-md-2">Secretaría</div>
+	<div class="col-md-10">
+
+		<select class="form-control" ng-model="$ctrl.s">
+		<option value="">Selecciona una Secretaría</option>
+  		<option value="Secretaría de Desarrollo Agropecuario">Secretaría de Desarrollo Agropecuario</option>
+  		<option value="Secretaría de Contraloría y Transparencia Gubernamental">Secretaría de Contraloría y Transparencia Gubernamental</option>
+  		<option value="Secretaría de Desarrollo Económico">Secretaría de Desarrollo Económico</option>
+  		<option value="Secretaria de Desarrollo Social">Secretaria de Desarrollo Social</option>
+  		<option value="Secretaría de Finanzas y Administración">Secretaría de Finanzas y Administración</option>
+  		<option value="Secretaría de Educación Pública">Secretaría de Educación Pública</option>
+  		<option value="Secretaría de Gobierno">Secretaría de Gobierno</option>
+  		<option value="Secretaría del Trabajo y Previsión Social">Secretaría del Trabajo y Previsión Social</option>
+  		<option value="Secretaría del Medio Ambiente y Recursos Naturales">Secretaría del Medio Ambiente y Recursos Naturales</option>
+  		<option value="Secretaría de Obras Públicas y Ordenamiento Territorial">Secretaría de Obras Públicas y Ordenamiento Territorial</option>
+  		<option value="Secretaría de Planeación, Desarrollo Regional y Metropolitano">Secretaría de Planeación, Desarrollo Regional y Metropolitano</option>
+  		<option value="Secretaría de Salud">Secretaría de Salud</option>
+  		<option value="Secretaría de Seguridad Pública">Secretaría de Seguridad Pública</option>
+  		<option value="Secretaría de Turismo y Cultura">Secretaría de Turismo y Cultura</option> 
+	</select>
+
+	</div>
+
+</div>
+
+
 	
 <div class="info well row">
+
 	<div class="col-md-2">Eje</div>
 	<div class="col-md-10">
 		<select id="eje" ng-change="$ctrl.setObjetivos()"  required class="form-control" ng-model="$ctrl.propuesta.eje">

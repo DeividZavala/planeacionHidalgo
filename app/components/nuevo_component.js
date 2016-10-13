@@ -25,6 +25,8 @@
         //formulario fancy
         self.propuesta = {};
         self.lineasAccion = [];
+        self.s = "Sin secretaría"
+        self.showSecretaria = false;
         //display mensajes
         self.mensaje = {};
 
@@ -37,14 +39,27 @@
             var messagesRef = firebase.database().ref().child("usuarios");
             // self.usuarios = $firebaseArray(messagesRef);
             var query = messagesRef.orderByKey().equalTo(self.firebaseUser.uid);
+
             self.secreta = $firebaseArray(query);
+            
+
+//si el usuario no tiene una secretaria relacionada lo obligamos a seleccionar una
             console.log(self.secretaria);
 
-            self.secreta.$loaded()
-                .then(function(){
 
+            self.secreta.$loaded()
+                .then(function(loaded){
+                    console.log(loaded[0]);
+                    if (loaded[0]===undefined){
+                        self.showSecretaria = true;
+                    }
+                    
                     angular.forEach(self.secreta, function(lista) {
-                        console.log(lista);
+
+                        console.log(lista.$id);
+                        console.log('nanai');
+                        self.showSecretaria = false;
+
                         self.laSecretaria.push({
                             nombre:lista.nombre,
                             secretaria:lista.secretaria,
@@ -155,9 +170,12 @@
             $('#loader_a').hide();
             $('#loader_b').show();
 
+            if(!self.showSecretaria){
+                self.s = self.laSecretaria[0].secretaria
+            }
 
             nuevo.propuestas.$add({
-                secretaria:self.laSecretaria[0].secretaria,
+                secretaria:self.s,
                 eje:self.propuesta.eje,
                 objetivo_estrategico:self.propuesta.objetivo_estrategico,
                 objetivo_general:self.propuesta.objetivo_general,
