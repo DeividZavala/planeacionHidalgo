@@ -1,15 +1,23 @@
-<article class="container">
 
-<section id="primera" class="espacio">
-<form class="row" ng-submit="$ctrl.continuar('#primera','#segunda')">
 
-<div ng-show="$ctrl.showSecretaria" class="info well row">
+<section class="mainContainer container">
 
-	<div class="col-md-2">Secretaría</div>
-	<div class="col-md-10">
+<div style="display:none;text-align:center" id="load">
+	<img src="http://www.chefdtv.com/wp-content/themes/culinier-theme/images/loader.gif">
+</div>
 
-		<select class="form-control" ng-model="$ctrl.s">
-		<option value="">Selecciona una Secretaría</option>
+<div ng-show="$ctrl.err()" class="alert alert-success" role="alert">{{$ctrl.success}}</div>
+
+<!-- <form ng-submit="$ctrl.add()" class="container"> -->
+<div class='row'>	
+<!-- <div class="col-md-2"> -->
+<!--<span>Secretaría</span></div>
+<div class="col-md-10">
+	<select required class="form-control" ng-model="$ctrl.secretaria">
+		<option value="{{$ctrl.laSecretaria[0].}}">
+			{{$ctrl.laSecretaria[0].secretaria}}
+		</option>
+		<option value="">Selecciona una opción</option>
   		<option value="Secretaría de Desarrollo Agropecuario">Secretaría de Desarrollo Agropecuario</option>
   		<option value="Secretaría de Contraloría y Transparencia Gubernamental">Secretaría de Contraloría y Transparencia Gubernamental</option>
   		<option value="Secretaría de Desarrollo Económico">Secretaría de Desarrollo Económico</option>
@@ -25,95 +33,73 @@
   		<option value="Secretaría de Seguridad Pública">Secretaría de Seguridad Pública</option>
   		<option value="Secretaría de Turismo y Cultura">Secretaría de Turismo y Cultura</option> 
 	</select>
+</div> -->
+<!--column 10-->
+<br>
+<br>
 
-	</div>
-
-</div>
-
-
-	
-<div class="info well row">
-
-	<div class="col-md-2">Eje</div>
-	<div class="col-md-10">
-		<select id="eje" ng-change="$ctrl.setObjetivos()"  required class="form-control" ng-model="$ctrl.propuesta.eje">
+<article id="primero"><!--Primero-->
+	<form name="first">
+<div  class="col-md-2">
+<span>Eje</span></div>
+<div class="col-md-10">
+	<select id="eje" ng-change="$ctrl.setObjetivos()"  required class="form-control" ng-model="$ctrl.eje">
 		<option value="">Selecciona una opción</option>
   		<option value="Gobierno Honesto, Cercano y Moderno">1. Gobierno Honesto, Cercano y Moderno</option>
   		<option value="Hidalgo Próspero y Dinámico">2. Hidalgo Próspero y Dinámico</option>
   		<option value="Hidalgo Humano e Igualitario">3. Hidalgo Humano e Igualitario</option>
   		<option value="Un Hidalgo Seguro con Justicia y en Paz">4. Un Hidalgo Seguro con Justicia y en Paz</option>
   		<option value="Un Hidalgo con Desarrollo Sustentable">5. Un Hidalgo con Desarrollo Sustentable</option>
-		</select>
-	</div>
+	</select>
 </div>
+<br>
+<br>
 
-
-<div class="info well row">
-	<div class="col-md-2">Objetivos estratégicos</div>
+	<div class="col-md-2">
+		<span>Objetivos estratégicos</span>
+	</div>
 	<div class="col-md-10">
-		<select required class="form-control col-md-6" ng-model="$ctrl.propuesta.objetivo_estrategico">
+		<select required class="form-control" ng-model="$ctrl.obest">
 		<option value="">Selecciona una opción</option>
   		<option ng-repeat="oe in $ctrl.obes" value="{{oe}}">{{oe}}</option>
-		</select>
+	</select>
 	</div>
-</div>
+
+<form>
+
+	<button style="float:right;margin:20px" class="btn btn-warning" ng-click="first.$valid && $ctrl.continuar('#primero','#segundo')" ng-show="first.$valid">
+		Continuar
+	</button> <!--Continuar-->
+
+</article> <!--Primero-->
 
 
 
 
 
 
+<!-- <article id="segundo" class=""><!--segundo--> -->
 
-<div class="col-md-12 col-md-offset-10">
-<input value="Continuar" class="btn btn-lg btn-warning" type="submit">
-</div>
-
-</form>
-</section>
-
-<!-- segunda seccion -->
-
-<section class="oculto" id="segunda">
-<form ng-submit="$ctrl.continuar('#segunda','#tercera')">
+<form id="second" name="second">
+	<input type="text" required>
+	<input type="submit">
+<form>
 
 
-<div class="info well row">
-	<div class="col-md-2">Objetivo General</div>
-	<div class="col-md-10">
-		<textarea ng-model="$ctrl.propuesta.objetivo_general" required class="form-control" style="width:100%;height:100px;"></textarea>
-	</div>
-</div>
-<div class="info well row">
-	<div class="col-md-2">
-		Lineas de Acción
-		<div class="btn btn-lg btn-success" ng-click="$ctrl.addLinea()">
-			<i class="fa fa-plus" aria-hidden="true"></i>
-			Agregar Linea
-		</div>
-	</div>
-	<div class="col-md-10 row">
-		
+
+	<h1 ng-show="second.$valid">Perro</h1>
+
+<!-- </article> <!--segundo-->
 
 
-		<div ng-repeat="linea in $ctrl.lineasAccion" class="col-md-6">
-			<span>Linea de acción {{$index+1}}</span>
-			<textarea ng-model="linea.texto" class="form-control" style="width:100%;height:50px;"></textarea>
-			<div ng-show="$last" ng-click="$ctrl.removeLinea()" class="btn btn-lg btn-danger"><i class="fa fa-times" aria-hidden="true"></i>
-				Quitar
-			</div>
-		</div>
 
-		
-	</div>
-			<div id="choicesDisplay">
-				      {{ $ctrl.lineasAccion }}
-			</div>
-</div>
 
-<div class="info well row">
-	<div class="col-md-2">Indicador Estratégico</div>
-	<div class="col-md-10">
-		<select required class="form-control" ng-model="$ctrl.propuesta.indicador_estrategico">
+<article id="tercero" class="oculto">
+
+<div class="col-md-2">
+<span>Indicador Estratégico</span></div>
+<div class="col-md-10">
+	<select required class="form-control" ng-model="$ctrl.indicador_estrategico">
 		<option value="">Selecciona una opción</option>
   		<option class="1" value='Tasa de Prevalencia de Corrupción (INEGI)'>Tasa de Prevalencia de Corrupción (INEGI)</option>
   		<option class="1" value='Proporción de la población que se sintió satisfecha o muy satisfecha en la realización de trámites y solicitudes de servicios con alguna dependencia estatal (INEGI)'>Proporción de la población que se sintió satisfecha o muy satisfecha en la realización de trámites y solicitudes de servicios con alguna dependencia estatal (INEGI)</option>
@@ -135,84 +121,90 @@
   		<option class="5" value='Superficie de áreas naturales con acciones de conservación y/o aprovechamiento de competencia federal, estatal y municipal (INEGI)'>Superficie de áreas naturales con acciones de conservación y/o aprovechamiento de competencia federal, estatal y municipal (INEGI)</option>
   		<option class="5" value='Porcentaje de Residuos Sólidos Urbanos (RSU) y de Manejo Especial (RME) con manejo adecuado (INEGI)'>* Porcentaje de Residuos Sólidos Urbanos (RSU) y de Manejo Especial (RME) con manejo adecuado (INEGI)</option>
 	</select>
+	<br>
+
+	</div>	
+
+
+	<div class="col-md-2">
+		<span>Programas Asociados</span></div>
+		<div class="col-md-10">
+		<textarea required class="form-control" ng-model="$ctrl.programas_asociados"></textarea>
 	</div>
-</div>
-
-	<div class="col-md-4">
-		<div ng-click="$ctrl.volver('#segunda','#primera')" class="btn btn-lg btn-danger">Volver Atraz</div>
+		<br>
+		<br>
+		<br>
+	<div class="col-md-2">
+		<span>Indicador(es) de Gestión</span></div>
+		<div class="col-md-10">
+		<textarea required class="form-control" ng-model="$ctrl.indicadores_de_gestion"></textarea></div>
+		<br>
+		<br>
+		<br>
+	
+<!-- 	<div class="col-md-2">
+		<span>Creado por: </span></div>
+		<div class="col-md-10">
+		<input disabled class="form-control" value="{{$ctrl.userEmail}}" ng-model="$ctrl.userEmail">
+	</div> -->
+	<br>
+	<br>
+	<div class="col-md-2">
+		<span>Fecha:</span></div>
+		<div class="col-md-10">
+		<input disabled class="form-control" placeholder="{{$ctrl.fecha | date :  'dd/MM/y hh:mm'}}" value="">
 	</div>
-
-	<div class="col-md-4 col-md-offset-4">
-		<input value="Continuar" class="btn btn-lg btn-warning" type="submit">
-	</div>
-
-</form>
-</section>
-
-<!-- Tercera seccion -->
-
-<section class="oculto" id="tercera">
-<form ng-submit="$ctrl.continuar('#tercera','#cuarta')">
-
-
-<div class="info well row">
-	<div class="col-md-2">Programas Asociados</div>
-	<div class="col-md-10">
-		<textarea ng-model="$ctrl.propuesta.programas_asociados" required class="form-control" style="width:100%;height:100px;"></textarea>
-	</div>
-</div>
-
-<div class="info well row">
-	<div class="col-md-2">Indicador(es) de Gestión</div>
-	<div class="col-md-10">
-		<textarea ng-model="$ctrl.propuesta.indicadores_de_gestion" required class="form-control" style="width:100%;height:100px;"></textarea>
-	</div>
-</div>
-
-
-	<div class="col-md-4">
-		<div ng-click="$ctrl.volver('#tercera','#segunda')" class="btn btn-lg btn-danger">Volver Atraz</div>
+	
 	</div>
 
-	<div class="col-md-4 col-md-offset-4">
-	<input value="Continuar" class="btn btn-lg btn-warning" type="submit">
+<div style='text-align:center;'>
+<br>
+
+
+
+<input ng-hide="$ctrl.err()" class="btn btn-primary oculto" type="submit" style='bmargin:0 auto'>
 	</div>
+	
+
+</article> <!--tercero-->
 
 
-</form>
-</section>
-
-<!-- cuarta seccion -->
-
-<section ng-hide="$ctrl.mensaje.success" style="text-align:center" class="oculto" id="cuarta">
-<form class="row" ng-submit="$ctrl.addPropuesta()">
-
-<h2>¡Felicidades haz completado un proyecto!</h2>
-
-<div class="col-md-6">
-<h4>¿Todo está bien?, puedes volver para revisar:</h4>
-<div ng-click="$ctrl.volver('#cuarta','#tercera')" class="btn btn-lg btn-danger">Volver Atraz</div>
-</div>
-
-<div class="col-md-6">
-<h4>Si todo esta correcto puedes subir tu proyecto:</h4>
-<input id="loader_a" class="btn btn-lg btn-success" value="Subir" type="submit">
-<img class="oculto" id="loader_b" src="http://www.chefdtv.com/wp-content/themes/culinier-theme/images/loader.gif">
-</div>
-
-
-</form>
-</section>
-
-
-<section style="text-align:center" id="Mensajes">
-
-	<div ng-show="$ctrl.mensaje.success" class="alert alert-success" role="alert">{{$ctrl.mensaje.msj}}</div>
-	<a margin ng-show="$ctrl.mensaje.success" class="btn btn-lg btn-info" href="#/nuevo">Subir otro proyecto</a>
-	<div ng-show="$ctrl.mensaje.error" class="alert alert-danger" role="alert">{{$ctrl.mensaje.msj}}</div>
-
+<!-- </form> -->
 
 </section>
+<!-- <section style="text-align:center" class="container">
+
+	<div ng-hide="$ctrl.userLoggedIn()" class="alert alert-warning" role="alert">
+		Porfavor inicia sesión <a href="#/login" class="btn btn-primary">aquí</a>
+	</div>
+
+	
+
+</section> -->
+
+    <script type="text/javascript">
+        // JavaScript
+        
+        window.sr = ScrollReveal()
+        .reveal('.mainContainer',
+        	{ 	
+        		origin   : "top",
+        		duration: 1500,
+        		distance : "24px",
+        		scale    : 1.05
+        	});
+  
+
+        
+        // sr.reveal('.bar');
+    </script>
+
+<script>
+	//la animacion de las secciones
+	
 
 
-</article>
+
+
+</script>
+
