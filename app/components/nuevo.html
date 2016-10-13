@@ -84,29 +84,30 @@
 	</div>
 </div>
 <div class="info well row">
-	<div class="col-md-2">Lineas de Acción</div>
-	<div class="col-md-10 row">
-		<div class="col-md-6">
-			<span>Linea de acción #1</span>
-			<textarea ng-model="$ctrl.lineasAccion[0]" class="form-control" style="width:100%;height:50px;"></textarea>
-		</div>
-
-		<div class="col-md-6">
-			<span>Linea de acción #2</span>
-			<textarea ng-model="$ctrl.lineasAccion[1]" class="form-control" style="width:100%;height:50px;"></textarea>
-		</div>
-
-		<div class="col-md-6">
-			<span>Linea de acción #3</span>
-			<textarea ng-model="$ctrl.lineasAccion[2]" class="form-control" style="width:100%;height:50px;"></textarea>
-		</div>
-
-		<div class="col-md-6">
-			<span>Linea de acción #4</span>
-			<textarea ng-model="$ctrl.lineasAccion[3]" class="form-control" style="width:100%;height:50px;"></textarea>
+	<div class="col-md-2">
+		Lineas de Acción
+		<div class="btn btn-lg btn-success" ng-click="$ctrl.addLinea()">
+			<i class="fa fa-plus" aria-hidden="true"></i>
+			Agregar Linea
 		</div>
 	</div>
+	<div class="col-md-10 row">
+		
 
+
+		<div ng-repeat="linea in $ctrl.lineasAccion" class="col-md-6">
+			<span>Linea de acción {{$index+1}}</span>
+			<textarea ng-model="linea.texto" class="form-control" style="width:100%;height:50px;"></textarea>
+			<div ng-show="$last" ng-click="$ctrl.removeLinea()" class="btn btn-lg btn-danger"><i class="fa fa-times" aria-hidden="true"></i>
+				Quitar
+			</div>
+		</div>
+
+		
+	</div>
+			<div id="choicesDisplay">
+				      {{ $ctrl.lineasAccion }}
+			</div>
 </div>
 
 <div class="info well row">

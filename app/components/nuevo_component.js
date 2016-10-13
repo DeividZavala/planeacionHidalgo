@@ -24,7 +24,7 @@
 
         //formulario fancy
         self.propuesta = {};
-        self.lineasAccion = [];
+        self.lineasAccion = [{'id':'linea 1'}];
         self.s = "Sin secretaría"
         self.showSecretaria = false;
         //display mensajes
@@ -314,6 +314,28 @@
             $(seccion).slideToggle();
 
         }
+
+
+
+        //desman para agregar lineas dinamicas
+
+          self.addLinea = function() {
+            var newItemNo = self.lineasAccion.length+1;
+            // console.log(self.lineasAccion[newItemNo-2])
+            // console.log(self.lineasAccion[newItemNo-2].texto)
+            if(newItemNo-1 === 0){
+                self.lineasAccion.push({'id':'linea '+newItemNo});
+            }
+            if (self.lineasAccion[newItemNo-2] != undefined && self.lineasAccion[newItemNo-2].texto != undefined){
+                self.lineasAccion.push({'id':'linea '+newItemNo});
+            }
+            
+          };
+            
+          self.removeLinea = function() {
+            var lastItem = self.lineasAccion.length-1;
+            self.lineasAccion.splice(lastItem);
+          };
 
 
 
